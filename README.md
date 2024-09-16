@@ -1,3 +1,7 @@
+Fork of Turbo console log and update feature
+
+add config to generate target file workspace path
+
 # Official Website
 
 https://www.turboconsolelog.io
