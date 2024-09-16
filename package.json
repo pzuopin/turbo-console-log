@@ -1,6 +1,6 @@
 {
-  "name": "turbo-console-log",
-  "displayName": "Turbo Console Log",
+  "name": "turbo-console-log-pzp",
+  "displayName": "Turbo Console Log Pzp",
   "description": "Automating the process of writing meaningful log messages.",
   "version": "2.10.4",
   "publisher": "ChakrounAnas",
@@ -21,59 +21,64 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Turbo Console Log Configuration",
+      "title": "Turbo Console Log Pzp Configuration",
       "properties": {
-        "turboConsoleLog.wrapLogMessage": {
+        "turboConsoleLogPzp.wrapLogMessage": {
           "type": "boolean",
           "default": false,
           "description": "Determine if the log message should be wrapped or not."
         },
-        "turboConsoleLog.logMessagePrefix": {
+        "turboConsoleLogPzp.logMessagePrefix": {
           "type": "string",
           "default": "🚀",
           "description": "The prefix of the log message."
         },
-        "turboConsoleLog.logMessageSuffix": {
+        "turboConsoleLogPzp.logMessageSuffix": {
           "type": "string",
           "default": ":",
           "description": "The suffix of the log message."
         },
-        "turboConsoleLog.includeFileNameAndLineNum": {
+        "turboConsoleLogPzp.includeFileNameAndLineNum": {
           "type": "boolean",
           "default": false,
           "description": "Whether to include the file name and the line number of the log message."
         },
-        "turboConsoleLog.addSemicolonInTheEnd": {
+        "turboConsoleLogPzp.includeFileNameWithWorkspacePath": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to include the file name and the line number of the log message and prex is workspace path."
+        },
+        "turboConsoleLogPzp.addSemicolonInTheEnd": {
           "type": "boolean",
           "default": false,
           "description": "Whether to add or not a semicolon in the end of the log message."
         },
-        "turboConsoleLog.insertEnclosingClass": {
+        "turboConsoleLogPzp.insertEnclosingClass": {
           "type": "boolean",
           "default": true,
           "description": "Whether to insert or not the enclosing class of the selected variable in the log message."
         },
-        "turboConsoleLog.insertEnclosingFunction": {
+        "turboConsoleLogPzp.insertEnclosingFunction": {
           "type": "boolean",
           "default": true,
           "description": "Whether to insert or not the enclosing function of the selected variable in the log message."
         },
-        "turboConsoleLog.insertEmptyLineBeforeLogMessage": {
+        "turboConsoleLogPzp.insertEmptyLineBeforeLogMessage": {
           "type": "boolean",
           "default": false,
           "description": "Whether to insert an empty line before the log message or not."
         },
-        "turboConsoleLog.insertEmptyLineAfterLogMessage": {
+        "turboConsoleLogPzp.insertEmptyLineAfterLogMessage": {
           "type": "boolean",
           "default": false,
           "description": "Whether to insert an empty line after the log message or not."
         },
-        "turboConsoleLog.delimiterInsideMessage": {
+        "turboConsoleLogPzp.delimiterInsideMessage": {
           "type": "string",
           "default": "~",
           "description": "The delimiter that will separate the different log message elements (file name, line number, class, function and variable)"
         },
-        "turboConsoleLog.quote": {
+        "turboConsoleLogPzp.quote": {
           "type": "string",
           "enum": [
             "\"",
@@ -83,7 +88,7 @@
           "default": "\"",
           "description": "Double quotes, single quotes or backtick"
         },
-        "turboConsoleLog.logType": {
+        "turboConsoleLogPzp.logType": {
           "type": "string",
           "enum": [
             "log",
@@ -95,7 +100,7 @@
           "default": "log",
           "description": "Select the log type"
         },
-        "turboConsoleLog.logFunction": {
+        "turboConsoleLogPzp.logFunction": {
           "type": "string",
           "default": "log",
           "description": "Specify a log function (when specified logType will be ignored)"
@@ -104,40 +109,40 @@
     },
     "commands": [
       {
-        "command": "turboConsoleLog.displayLogMessage",
-        "title": "Turbo Console Log: Display Log Message"
+        "command": "turboConsoleLogPzp.displayLogMessage",
+        "title": "Turbo Console Log Pzp: Display Log Message "
       },
       {
-        "command": "turboConsoleLog.commentAllLogMessages",
-        "title": "Turbo Console Log: Comment All Log Messages"
+        "command": "turboConsoleLogPzp.commentAllLogMessages",
+        "title": "Turbo Console Log Pzp: Comment All Log Messages"
       },
       {
-        "command": "turboConsoleLog.uncommentAllLogMessages",
-        "title": "Turbo Console Log: Uncomment All Log Messages"
+        "command": "turboConsoleLogPzp.uncommentAllLogMessages",
+        "title": "Turbo Console Log Pzp: Uncomment All Log Messages"
       },
       {
-        "command": "turboConsoleLog.deleteAllLogMessages",
-        "title": "Turbo Console Log: Delete All Log Messages"
+        "command": "turboConsoleLogPzp.deleteAllLogMessages",
+        "title": "Turbo Console Log Pzp: Delete All Log Messages"
       }
     ],
     "keybindings": [
       {
-        "command": "turboConsoleLog.displayLogMessage",
+        "command": "turboConsoleLogPzp.displayLogMessage",
         "key": "ctrl+alt+l",
         "mac": "ctrl+alt+l"
       },
       {
-        "command": "turboConsoleLog.commentAllLogMessages",
+        "command": "turboConsoleLogPzp.commentAllLogMessages",
         "key": "alt+shift+c",
         "mac": "alt+shift+c"
       },
       {
-        "command": "turboConsoleLog.uncommentAllLogMessages",
+        "command": "turboConsoleLogPzp.uncommentAllLogMessages",
         "key": "alt+shift+u",
         "mac": "alt+shift+u"
       },
       {
-        "command": "turboConsoleLog.deleteAllLogMessages",
+        "command": "turboConsoleLogPzp.deleteAllLogMessages",
         "key": "alt+shift+d",
         "mac": "alt+shift+d"
       }

@@ -1,4 +1,4 @@
-import { Position, TextDocument, TextEditorEdit, TextLine } from 'vscode';
+import { Position, TextDocument, TextEditorEdit, TextLine, window, workspace } from 'vscode';
 import {
   BlockType,
   ExtensionProperties,
@@ -107,6 +107,35 @@ export class JSDebugMessage extends DebugMessage {
       : `${spacesBeforeMsg}${debuggingMsgContent}`;
     return debuggingMsg;
   }
+
+  private getCurrentFileProjectRoot() {  
+    // 获取当前活动的文本编辑器  
+    const editor = window.activeTextEditor;  
+    if (!editor) {  
+        // 如果没有活动编辑器，返回 null  
+        return null;  
+    }  
+
+    // 获取当前文件的 URI  
+    const fileUri = editor.document.uri;  
+
+    // 获取工作区文件夹  
+    const workspaces = workspace.workspaceFolders;  
+
+    if (workspaces) {  
+        for (const workspace of workspaces) {  
+            const workspacePath = workspace.uri.fsPath;  
+
+            // 检查当前文件是否在工作区路径内  
+            if (fileUri.fsPath.startsWith(workspacePath)) {  
+                return workspacePath; // 返回工作区根路径  
+            }  
+        }  
+    }  
+
+    // 如果没有找到工作区，返回 null  
+    return null;  
+}  
   private constructDebuggingMsgContent(
     document: TextDocument,
     selectedVar: string,
@@ -117,9 +146,24 @@ export class JSDebugMessage extends DebugMessage {
       'wrapLogMessage' | 'insertEmptyLineAfterLogMessage'
     >,
   ): string {
+    let fileProjectPath = null;
+    const projectRoot = this.getCurrentFileProjectRoot();  
+    if (projectRoot && extensionProperties.includeFileNameWithWorkspacePath) {  
+      console.log(`当前文件所在的项目根目录: ${projectRoot}`);  
+      fileProjectPath = document.fileName.replace(projectRoot, '');
+      if (fileProjectPath.startsWith('\\') || fileProjectPath.startsWith('/')) {
+        fileProjectPath = fileProjectPath.substring(1);
+      }
+      if (fileProjectPath.indexOf("\\") > -1) {
+        fileProjectPath = fileProjectPath.replace(/\\/g, '/');
+      }
+    } else {  
+        console.log('未能找到项目根目录or未开启includeFileNameWithWorkspacePath');  
+    }  
     const fileName = document.fileName.includes('/')
       ? document.fileName.split('/')[document.fileName.split('/').length - 1]
       : document.fileName.split('\\')[document.fileName.split('\\').length - 1];
+      
     const funcThatEncloseTheVar: string = this.enclosingBlockName(
       document,
       lineOfSelectedVar,
@@ -145,7 +189,7 @@ export class JSDebugMessage extends DebugMessage {
         : ''
     }${
       extensionProperties.includeFileNameAndLineNum
-        ? `file: ${fileName}:${
+        ? `file: ${fileProjectPath ? fileProjectPath : fileName}:${
             lineOfLogMsg +
             (extensionProperties.insertEmptyLineBeforeLogMessage ? 2 : 1)
           } ${extensionProperties.delimiterInsideMessage} `

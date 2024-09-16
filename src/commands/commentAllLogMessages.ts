@@ -4,7 +4,7 @@ import { Command, ExtensionProperties, Message } from '../entities';
 
 export function commentAllLogMessagesCommand(): Command {
   return {
-    name: 'turboConsoleLog.commentAllLogMessages',
+    name: 'turboConsoleLogPzp.commentAllLogMessages',
     handler: async (
       {
         delimiterInsideMessage,

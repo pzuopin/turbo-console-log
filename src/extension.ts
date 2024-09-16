@@ -18,7 +18,7 @@ export function activate(): void {
     debugMessageLine,
   );
   const config: vscode.WorkspaceConfiguration =
-    vscode.workspace.getConfiguration('turboConsoleLog');
+    vscode.workspace.getConfiguration('turboConsoleLogPzp');
   const properties: ExtensionProperties = getExtensionProperties(config);
   const commands: Array<Command> = getAllCommands();
   for (const { name, handler } of commands) {
@@ -46,6 +46,7 @@ function getExtensionProperties(
     delimiterInsideMessage: workspaceConfig.delimiterInsideMessage ?? '~',
     includeFileNameAndLineNum:
       workspaceConfig.includeFileNameAndLineNum ?? false,
+    includeFileNameWithWorkspacePath: workspaceConfig.includeFileNameWithWorkspacePath ?? false,
     logType: workspaceConfig.logType ?? 'log',
     logFunction: workspaceConfig.logFunction ?? 'log',
   };

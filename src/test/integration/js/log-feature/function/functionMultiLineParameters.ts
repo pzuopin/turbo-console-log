@@ -37,7 +37,7 @@ export default (): void => {
           ),
         ];
         await vscode.commands.executeCommand(
-          'turboConsoleLog.displayLogMessage',
+          'turboConsoleLogPzp.displayLogMessage',
           [],
         );
         await Promise.all(
@@ -54,7 +54,7 @@ export default (): void => {
           ),
         ];
         await vscode.commands.executeCommand(
-          'turboConsoleLog.displayLogMessage',
+          'turboConsoleLogPzp.displayLogMessage',
           [],
         );
         await Promise.all(

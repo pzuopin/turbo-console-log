@@ -4,7 +4,7 @@ import { Command, ExtensionProperties, Message } from '../entities';
 
 export function deleteAllLogMessagesCommand(): Command {
   return {
-    name: 'turboConsoleLog.deleteAllLogMessages',
+    name: 'turboConsoleLogPzp.deleteAllLogMessages',
     handler: async (
       {
         delimiterInsideMessage,

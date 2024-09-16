@@ -31,7 +31,7 @@ export default (): void => {
       );
       if (activeTextEditor) {
         await vscode.commands.executeCommand(
-          'turboConsoleLog.uncommentAllLogMessages',
+          'turboConsoleLogPzp.uncommentAllLogMessages',
           [],
         );
         await Promise.all(

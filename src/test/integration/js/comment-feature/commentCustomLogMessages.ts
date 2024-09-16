@@ -31,7 +31,7 @@ export default (): void => {
       );
       if (activeTextEditor) {
         await vscode.commands.executeCommand(
-          'turboConsoleLog.commentAllLogMessages',
+          'turboConsoleLogPzp.commentAllLogMessages',
           [
             {
               logFunction: 'fancy.debug.func',
